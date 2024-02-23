@@ -1,5 +1,6 @@
 const qrcode = require('qrcode-terminal');
 const conversorDeTimestamp = require('./src/utils/conversorDeTimestamp')
+const trataMensagens = require('./src/chat/commons')
 const { Client, LocalAuth } = require('whatsapp-web.js');
 
 const client = new Client({
@@ -18,15 +19,11 @@ client.on('ready', () => {
     console.log('Client is ready!');
 });
 
-client.on('message', async (message) => {
-    const whatsHorario = conversorDeTimestamp.converterParaHorario(message.timestamp)
-    const whatsData = conversorDeTimestamp.converterParaData(message.timestamp)
-    console.log(`${message._data.notifyName}(${whatsData}-${whatsHorario})/${message.type} : ${message.body}\n`);
-    console.log(message);
-	if (message.body === '!ping') {
-		await message.reply('pong');
-        await message.react('👍');
-	}
+client.on('message', async (msg) => {
+    if (msg.body.startsWith('!')) {
+        const comando = trataMensagens.trataMensagem(msg.body)        
+         msg.reply(`Seu comando foi *${comando}*`)
+    }
 });
 
 
