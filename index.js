@@ -1,7 +1,10 @@
+const fs = require('fs');
+
 const qrcode = require("qrcode-terminal");
 const conversorDeTimestamp = require("./src/utils/conversorDeTimestamp");
 const trataMensagens = require("./src/chat/commons");
 const { Client, LocalAuth } = require("whatsapp-web.js");
+
 
 const client = new Client({
   authStrategy: new LocalAuth({
@@ -16,6 +19,7 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log("Client is ready!");
+  trataMensagens.registraLog(`${Date.now()} - Cliente iniciado com sucesso!`);
 });
 
 client.on("message", async (msg) => {
@@ -25,7 +29,7 @@ client.on("message", async (msg) => {
   const data = conversorDeTimestamp.converterParaData(msg.timestamp);
   const device = msg._data.device;
 
-  console.log(`${msg._data.notifyName} / ${msg._data.type} (${data}:${horario})  : ${msg.body}`);
+  trataMensagens.registraLog((`(${data}:${horario}/${device}) - ${msg._data.notifyName} / ${msg._data.type}  : ${msg.body}`));
   if (msg.body.startsWith("!")) {
     console.log(msg);
     msg.reply(
@@ -35,3 +39,7 @@ client.on("message", async (msg) => {
 });
 
 client.initialize();
+
+
+
+  
