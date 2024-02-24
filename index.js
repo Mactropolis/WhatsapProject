@@ -21,8 +21,9 @@ client.on('ready', () => {
 
 client.on('message', async (msg) => {
     if (msg.body.startsWith('!')) {
-        const comando = trataMensagens.buscaComando(msg.body)        
-         msg.reply(`Seu comando foi *${comando}*`)
+        const comando = trataMensagens.buscaComando(msg.body)
+        const horario = conversorDeTimestamp.converteTimestamp(msg.timestamp);        
+         msg.reply(`Seu comando, enviado as ${horario} foi *${comando}*`)
     }
 });
 
