@@ -19,7 +19,7 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log("Client is ready!");
-  trataMensagens.registraLog(`${Date.now()} - Cliente iniciado com sucesso!`);
+  trataMensagens.registraLog(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
 });
 
 client.on("message", async (msg) => {
@@ -29,7 +29,7 @@ client.on("message", async (msg) => {
   const data = conversorDeTimestamp.converterParaData(msg.timestamp);
   const device = msg._data.device;
 
-  trataMensagens.registraLog((`(${data}:${horario}/${device}) - ${msg._data.notifyName} / ${msg._data.type}  : ${msg.body}`));
+  trataMensagens.registraLog((`(${data} - ${horario}/${device}) - ${msg._data.notifyName} / ${msg._data.type}  : ${msg.body}`));
   if (msg.body.startsWith("!")) {
     console.log(msg);
     msg.reply(
