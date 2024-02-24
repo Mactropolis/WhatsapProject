@@ -1,4 +1,4 @@
-function trataMensagem(message) {
+function buscaComando(message) {
     const rawMessage = message.split(' ');
     const command = rawMessage[0];
 
@@ -6,5 +6,5 @@ function trataMensagem(message) {
 }
 
 module.exports = {
-    trataMensagem: trataMensagem
+    buscaComando: buscaComando
 }
