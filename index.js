@@ -28,12 +28,13 @@ client.on("message", async (msg) => {
   const horario = conversorDeTimestamp.converterParaHorario(msg.timestamp);
   const data = conversorDeTimestamp.converterParaData(msg.timestamp);
   const device = msg._data.device;
+  const notifyName = msg._data.notifyName;
 
-  trataMensagens.registraLog((`(${data} - ${horario}/${device}) - ${msg._data.notifyName} / ${msg._data.type}  : ${msg.body}`));
+  trataMensagens.registraLog((`(${data} - ${horario}/${device}) - ${notifyName} / ${msg._data.type}  : ${msg.body}`));
   if (msg.body.startsWith("!")) {
     console.log(msg);
     msg.reply(
-      `Seu comando, enviado ${horario} / ${data}, foi *${comando}* enviado de *{}`
+      `Seu comando, enviado ${horario} / ${data}, foi *${comando}* enviado de *${notifyName}*`
     );
   }
 });
