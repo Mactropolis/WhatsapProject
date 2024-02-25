@@ -5,12 +5,15 @@ const conversorDeTimestamp = require("./src/utils/conversorDeTimestamp");
 const trataMensagens = require("./src/chat/commons");
 const { Client, LocalAuth } = require("whatsapp-web.js");
 
-
 const client = new Client({
-  authStrategy: new LocalAuth({
-    dataPath: "yourFolderName",
-    clientId: "ProjectWhatsapp",
-  }),
+  puppeteer: {
+    headless: true,
+    args: ['--no-sandbox'],
+    authStrategy: new LocalAuth({
+      dataPath: "yourFolderName",
+      clientId: "ProjectWhatsapp",
+    })
+  },
 });
 
 client.on("qr", (qr) => {
@@ -43,4 +46,4 @@ client.initialize();
 
 
 
-  
+

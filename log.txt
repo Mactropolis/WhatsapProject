@@ -3,3 +3,81 @@ Rafaela / chat (24/02/24:10:34:19)  : [Pai]
 1708783371080 - Cliente iniciado com sucesso!
 24/02/2024 - 11:06:04 - Cliente iniciado com sucesso!
 (24/02/24:11:06:23/undefined) - Rafaela / chat  : https://www.instagram.com/reel/C3c6JlIrqKx/?igsh=MW9ia3lud2o0eGtjMQ==
+24/02/2024 - 11:49:33 - Cliente iniciado com sucesso!
+(24/02/24 - 12:01:04/undefined) - undefined / e2e_notification  : 33650884794@c.us
+(24/02/24 - 12:01:04/undefined) - undefined / e2e_notification  : 33650884794@c.us
+(24/02/24 - 12:09:22/undefined) - Daniel / chat  : Uia
+(24/02/24 - 12:09:46/undefined) - Daniel / chat  : !uia
+24/02/2024 - 12:12:06 - Cliente iniciado com sucesso!
+(24/02/24 - 12:17:33/undefined) - Rafaela / chat  : !oi
+(24/02/24 - 12:17:47/undefined) - Rafaela / chat  : A abuso
+(24/02/24 - 12:17:57/undefined) - Rafaela / sticker  : 
+(24/02/24 - 12:17:58/undefined) - Rafaela / sticker  : 
+(24/02/24 - 12:18:04/undefined) - Rafaela / chat  : Oi
+(24/02/24 - 12:18:20/undefined) - Rafaela / chat  : FfYflLUDARUTSITSIFALULFUALFFULAFUALDDALDLUAUFALDAUADUDAULDUALDUAADAUAAULULDAAAULAUFULJFLuadlydadKGKYDLauriar8ao63aelyaulearalursrurarurssrtsra
+(24/02/24 - 12:19:15/undefined) - 5511948047103 / list  : 
+(24/02/24 - 12:19:22/undefined) - 5511948047103 / chat  : Tudo bem. Selecione o pedido que deseja consultar o protocolo:
+(24/02/24 - 12:19:23/undefined) - 5511948047103 / chat  : Estes são seus últimos pedidos:
+(24/02/24 - 12:19:26/undefined) - 5511948047103 / chat  : Confirmando, este é o pedido que deseja verificar, certo?
+
+⠀
+*Pedido*: v3040562mltr-01
+
+*Data de compra*: 07/02/2024 00:56
+
+*Detalhe*: Ar-Condicionado Multi Split Inverter Daikin 24.000 BTUs (2x Evap HW 9.000 + 1x Evap HW 18.000) Quente/Frio 220V⠀
+(24/02/24 - 12:19:31/undefined) - 5511948047103 / chat  : Protocolo(s):
+1.
+Número: 20240222420238
+Motivo: Casos Críticos - Reclame Aqui
+Data: 2024-02-22
+Status: *Pendente*
+2.
+Número: 20240222420056
+Motivo: Entrega - Atraso na entrega
+Data: 2024-02-22
+Status: *Finalizado*
+3.
+Número: 20240221419756
+Motivo: Fiscal - 2ª via Nota Fiscal
+Data: 2024-02-21
+Status: *Finalizado*
+4.
+Número: 20240221419750
+Motivo: Entrega - Atraso na entrega
+Data: 2024-02-21
+Status: *Pendente*
+5.
+Número: 20240221419748
+Motivo: Ciclo de Pedido - Posição de entrega
+Data: 2024-02-21
+Status: *Finalizado*
+6.
+Número: 20240212417363
+Motivo: Entrega - Ocorrências
+Data: 2024-02-12
+Status: *Finalizado*
+(24/02/24 - 12:19:34/undefined) - 5511948047103 / chat  : Posso te ajudar em algo mais?
+(24/02/24 - 12:34:11/undefined) - Rafaela / chat  : !he
+(24/02/24 - 12:34:28/undefined) - Rafaela / chat  : !pai já vms cume
+(24/02/24 - 12:34:42/undefined) - Rafaela / chat  : .oi.
+(24/02/24 - 12:34:51/undefined) - Rafaela / chat  : _oi_
+(24/02/24 - 12:35:33/undefined) - Rafaela / chat  : "Oi"
+(24/02/24 - 12:35:56/undefined) - Rafaela / chat  : «oi»
+(24/02/24 - 12:38:37/undefined) - Newton Matos / chat  : Gente tá entrando água da chuva no 3 subsolo do edifício garagem
+(24/02/24 - 12:43:10/undefined) - Julia Santos / chat  : nossa sério ? mais dahora entrar pra pegar os carros ?
+(24/02/24 - 12:49:46/undefined) - Newton Matos / video  : 
+(24/02/24 - 12:49:49/undefined) - Newton Matos / chat  : Já parou
+(24/02/24 - 12:50:02/undefined) - Newton Matos / chat  : Eu fiquei com medo . De apagar
+(24/02/24 - 12:50:06/undefined) - Newton Matos / chat  : Alagar
+(24/02/24 - 12:51:40/undefined) - Newton Matos / chat  : O pior que sai água das tampas do bueiro
+(24/02/24 - 12:52:20/undefined) - Douglas / chat  : Creio que não alaga não
+(24/02/24 - 12:52:25/undefined) - Douglas / chat  : Mas dá um susto né?
+(24/02/24 - 12:52:33/undefined) - Douglas / chat  : Isso já preocup
+(24/02/24 - 12:52:43/undefined) - Newton Matos / chat  : E muito
+(24/02/24 - 12:53:55/undefined) - Newton Matos / chat  : Porque entra água do esgoto . Porque tá um mal.cheito lá
+(24/02/24 - 13:42:57/undefined) - Lz / video  : 
+(24/02/24 - 13:43:32/undefined) - Lz / chat  : Situação da garagem da rua de trás. Retorno de agua de esgoto, cheiro forte. Nao sei se com uma chuva mto forte se a agua nao sobe de vez
+(24/02/24 - 13:44:32/undefined) - Lz / chat  : A garagem é abaixo do nível da rua.
+(24/02/24 - 14:42:42/undefined) - Thais Dantas / chat  : Galera alguém teria uma martela para emprestar ?
+(24/02/24 - 14:48:46/undefined) - Ana Quinto / chat  : Eu tenho martelo 🔨
