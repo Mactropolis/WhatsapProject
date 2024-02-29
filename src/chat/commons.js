@@ -6,10 +6,11 @@ function buscaComando(message) {
 }
 
 function registraLog(message) {
+const conversorDeTimestamp = require("../utils/conversorDeTimestamp");
 const fs = require('fs');
   fs.appendFile("log.txt", message + "\n", (err) => {
     if (err) throw err;
-    console.log("Mensagem registrada no arquivo de log.");
+    console.log(`${conversorDeTimestamp.obterDataFormatada()} Mensagem registrada no arquivo de log.`);
   });
 }
 

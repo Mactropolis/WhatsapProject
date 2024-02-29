@@ -8,7 +8,7 @@ const { Client, LocalAuth } = require("whatsapp-web.js");
 const client = new Client({
   puppeteer: {
     headless: true,
-    args: ['--no-sandbox'],
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
     authStrategy: new LocalAuth({
       dataPath: "yourFolderName",
       clientId: "ProjectWhatsapp",
@@ -21,7 +21,7 @@ client.on("qr", (qr) => {
 });
 
 client.on("ready", () => {
-  console.log("Client is ready!");
+  console.log(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
   trataMensagens.registraLog(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
 });
 
