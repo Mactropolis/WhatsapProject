@@ -4,6 +4,7 @@ const qrcode = require("qrcode-terminal");
 const conversorDeTimestamp = require("./src/utils/conversorDeTimestamp");
 const trataMensagens = require("./src/chat/commons");
 const { Client, LocalAuth } = require("whatsapp-web.js");
+const mongoDB = require("./src/mongo/mongoCommon")
 
 const client = new Client({
   puppeteer: {
@@ -33,7 +34,8 @@ client.on("message", async (msg) => {
   const device = msg._data.device;
   const notifyName = msg._data.notifyName;
 
-  trataMensagens.registraLog((`(${data} - ${horario}/${device}) - ${notifyName} / ${msg._data.type}  : ${msg.body}`));
+  console.log((`(${data} - ${horario}/${device}) - ${notifyName} / ${msg._data.type}  : ${msg.body}`));
+  mongoDB.InsereChat(msg)
   if (msg.body.startsWith("!")) {
     console.log(msg);
     msg.reply(
