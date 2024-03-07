@@ -12,12 +12,12 @@ function MongoConecta() {
         DB_PORT,
         DB_USERNAME,
         DB_PASSWORD
-      } = process.env;
-      
-      MongoClient.connect(
+    } = process.env;
+
+    MongoClient.connect(
         `mongodb://${DB_HOSTNAME}:${DB_PORT}/${DB_DATABASE}`)
         .then(result => {
-          console.log(`${conversorDeTimestamp.obterDataFormatada()} - MongoDB Connected`);
+            console.log(`${conversorDeTimestamp.obterDataFormatada()} - MongoDB Connected`);
         })
         .catch(error => {
             console.log(`${conversorDeTimestamp.obterDataFormatada()} - MongoDB Fail`);
@@ -34,9 +34,9 @@ async function InsereChat(objeto) {
         DB_PORT,
         DB_USERNAME,
         DB_PASSWORD
-      } = process.env;
-   
-    const client = new MongoClient(`mongodb://${DB_HOSTNAME}:${DB_PORT}/${DB_DATABASE}`);
+    } = process.env;
+
+    const client = new MongoClient(`mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOSTNAME}:${DB_PORT}/${DB_DATABASE}`);
     const dbName = DB_DATABASE;
     const collectionName = 'wsmessages';
 
@@ -57,6 +57,6 @@ async function InsereChat(objeto) {
 }
 
 module.exports = {
-    MongoConecta : MongoConecta,
+    MongoConecta: MongoConecta,
     InsereChat: InsereChat
 }

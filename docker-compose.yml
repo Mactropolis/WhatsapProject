@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-    web:
-        container_name: web
+    whatslog:
+        container_name: whatslog
         build: .
         restart: always
         env_file:
@@ -22,16 +22,15 @@ services:
         image: mongo:4.4.6
         container_name: db
         restart: always
-        env_file:
-            - .env
         ports:
             - '${DB_PORT}:27017'
+        environment:
+            MONGO_INITDB_DATABASE: ${DB_DATABASE}
+            MONGO_INITDB_ROOT_USERNAME: ${DB_ADMIN_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_ADMIN_PASSWORD}
+        env_file:
+            - .env
         volumes:
             - dbdata-volume:/data/db
-        environment:
-            MONGO_INITDB_USERNAME: ${DB_USERNAME}
-            MONGO_INITDB_PASSWORD: ${DB_PASSWORD}
-            MONGO_INITDB_DATABASE: ${DB_DATABASE}
-
 volumes:
     dbdata-volume:

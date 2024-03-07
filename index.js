@@ -23,7 +23,7 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
-  trataMensagens.registraLog(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
+  // trataMensagens.registraLog(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
 });
 
 client.on("message", async (msg) => {
