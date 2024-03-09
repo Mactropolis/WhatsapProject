@@ -38,7 +38,7 @@ async function InsereChat(objeto) {
 
     const client = new MongoClient(`mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOSTNAME}:${DB_PORT}/${DB_DATABASE}`);
     const dbName = DB_DATABASE;
-    const collectionName = 'wsmessages';
+    const collectionName = 'wsmessags';
 
     try {
         await client.connect();

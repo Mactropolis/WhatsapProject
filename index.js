@@ -1,20 +1,19 @@
-const fs = require('fs');
-
 const qrcode = require("qrcode-terminal");
 const conversorDeTimestamp = require("./src/utils/conversorDeTimestamp");
 const trataMensagens = require("./src/chat/commons");
 const { Client, LocalAuth } = require("whatsapp-web.js");
 const mongoDB = require("./src/mongo/mongoCommon")
 
+// const client = new Client({
+//   authStrategy: new LocalAuth({dataPath: './whatsPrefs'})
+// });
+
 const client = new Client({
+  authStrategy: new LocalAuth(),
   puppeteer: {
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    authStrategy: new LocalAuth({
-      dataPath: "yourFolderName",
-      clientId: "ProjectWhatsapp",
-    })
-  },
+      headless: true,
+      args: ['--no-sandbox']
+  }
 });
 
 client.on("qr", (qr) => {
