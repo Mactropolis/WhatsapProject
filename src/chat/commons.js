@@ -1,3 +1,6 @@
+const mongoDB = require("../mongo/mongoCommon")
+const conversorDeTimestamp = require("../utils/conversorDeTimestamp");
+
 function buscaComando(message) {
   const rawMessage = message.split(" ");
   const command = rawMessage[0];
@@ -5,16 +8,24 @@ function buscaComando(message) {
   return command.substring(1);
 }
 
-// function registraLog(message) {
-// const conversorDeTimestamp = require("../utils/conversorDeTimestamp");
-// const fs = require('fs');
-//   fs.appendFile("log.txt", message + "\n", (err) => {
-//     if (err) throw err;
-//     console.log(`${conversorDeTimestamp.obterDataFormatada()} Mensagem registrada no arquivo de log.`);
-//   });
-// }
+async function trataMensagem(msg) {
+  const comando = this.buscaComando(msg.body);
+  const horario = conversorDeTimestamp.converterParaHorario(msg.timestamp);
+  const data = conversorDeTimestamp.converterParaData(msg.timestamp);
+  const device = msg._data.device;
+  const notifyName = msg._data.notifyName;
+
+  console.log((`(${data} - ${horario}/${device}) - ${notifyName} / ${msg._data.type}  : ${msg.body}`));
+  mongoDB.InsereChat(msg)
+  if (msg.body.startsWith("!")) {
+    console.log(msg);
+    msg.reply(
+      `Seu comando, enviado ${horario} / ${data}, foi *${comando}* enviado de *${notifyName}*`
+    );
+  }
+}
 
 module.exports = {
   buscaComando: buscaComando,
-  // registraLog: registraLog,
+  trataMensagem: trataMensagem
 };

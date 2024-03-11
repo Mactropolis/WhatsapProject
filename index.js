@@ -1,12 +1,19 @@
+require('dotenv/config');
 const qrcode = require("qrcode-terminal");
 const conversorDeTimestamp = require("./src/utils/conversorDeTimestamp");
-const trataMensagens = require("./src/chat/commons");
+const mensagens = require("./src/chat/commons");
 const { Client, LocalAuth } = require("whatsapp-web.js");
-const mongoDB = require("./src/mongo/mongoCommon")
+const express = require('express');
+const apiRoutes = require('./src/api/routes')
+const app = express();
 
-// const client = new Client({
-//   authStrategy: new LocalAuth({dataPath: './whatsPrefs'})
-// });
+const port = process.env.WEB_PORT;
+
+app.use('/api', apiRoutes);
+
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});
 
 const client = new Client({
   authStrategy: new LocalAuth(),
@@ -22,29 +29,10 @@ client.on("qr", (qr) => {
 
 client.on("ready", () => {
   console.log(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
-  // trataMensagens.registraLog(`${conversorDeTimestamp.obterDataFormatada()} - Cliente iniciado com sucesso!`);
 });
 
-client.on("message", async (msg) => {
-
-  const comando = trataMensagens.buscaComando(msg.body);
-  const horario = conversorDeTimestamp.converterParaHorario(msg.timestamp);
-  const data = conversorDeTimestamp.converterParaData(msg.timestamp);
-  const device = msg._data.device;
-  const notifyName = msg._data.notifyName;
-
-  console.log((`(${data} - ${horario}/${device}) - ${notifyName} / ${msg._data.type}  : ${msg.body}`));
-  mongoDB.InsereChat(msg)
-  if (msg.body.startsWith("!")) {
-    console.log(msg);
-    msg.reply(
-      `Seu comando, enviado ${horario} / ${data}, foi *${comando}* enviado de *${notifyName}*`
-    );
-  }
+client.on("message_create", async (msg) => {
+  mensagens.trataMensagem(msg);
 });
 
 client.initialize();
-
-
-
-
