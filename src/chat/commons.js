@@ -8,8 +8,15 @@ function buscaComando(message) {
   return command.substring(1);
 }
 
+// async function keywordCheck(message) {
+//   if(message == null) {
+//     return false;
+//   }
+// }
+
 async function trataMensagem(msg) {
   const comando = this.buscaComando(msg.body);
+  // const keywordAlert = await this.keywordCheck(msg.body);
   const horario = conversorDeTimestamp.converterParaHorario(msg.timestamp);
   const data = conversorDeTimestamp.converterParaData(msg.timestamp);
   const device = msg._data.device;
