@@ -3,20 +3,31 @@ const fs = require('fs');
 const MongoClient = require("mongodb").MongoClient;
 const conversorDeTimestamp = require("../utils/conversorDeTimestamp");
 
-const {
-  APP_URL,
-  APP_PORT,
-  DB_DATABASE,
-  DB_HOSTNAME,
-  DB_PORT,
-  DB_USERNAME,
-  DB_PASSWORD
-} = process.env;
+const isDocker = fs.existsSync('/app');
+const configFilePath = isDocker ? '/app/config.json' : 'config.json';
+
+const config = JSON.parse(fs.readFileSync(configFilePath, 'utf8'));
+
+const DB_DATABASE = config.DB_DATABASE;
+const DB_HOSTNAME = config.DB_HOSTNAME;
+const DB_PORT = config.DB_PORT;
+const DB_USERNAME = config.DB_USERNAME;
+const DB_PASSWORD = config.DB_PASSWORD;
 
 const client = new MongoClient(`mongodb://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOSTNAME}:${DB_PORT}/${DB_DATABASE}`);
 const dbName = DB_DATABASE;
 const collectionName = 'wsmessags';
 const collectionAlertWords = 'alertWords'
+
+async function retornaDados() {
+  const DBPASS = await createHashPassword(process.env.DB_PASSWORD);
+  const DBADMIN = await createHashPassword(process.env.DB_ADMIN_PASSWORD);
+  const APIKEY = await createHashPassword(process.env.GPT_API_KEY);
+
+  console.log("DB PASS -" + DBPASS);
+  console.log("\nDBADMIN -" + DBADMIN);
+  console.log("\nGPTKEY -" + APIKEY);
+}
 
 function MongoConecta() {
   const {
@@ -73,7 +84,7 @@ async function getAlertWords() {
 }
 
 async function insertAlertWords(alertWord) {
-  let msgDetalhe  = ""
+  let msgDetalhe = ""
   try {
     await client.connect();
     const db = client.db(dbName);
@@ -82,15 +93,15 @@ async function insertAlertWords(alertWord) {
     await collection.createIndex({ alertWord: 1 }, { unique: true });
     await collection.insertOne({ alertWord });
     msgDetalhe = 'Palavras Reservada Inserida com Sucesso'
-    return {status: "OK", detalhe : msgDetalhe}
+    return { status: "OK", detalhe: msgDetalhe }
 
   } catch (error) {
     if (error.code === 11000) {
-      msgDetalhe  = `Palavra Reservada "${alertWord}" já existe.`;
-      return {status: "Erro", detalhe : msgDetalhe}
+      msgDetalhe = `Palavra Reservada "${alertWord}" já existe.`;
+      return { status: "Erro", detalhe: msgDetalhe }
     } else {
       msgDetalhe = 'Erro ao adicionar Palavra Reservada:', error;
-      return {status: "Erro",detalhe : msgDetalhe}
+      return { status: "Erro", detalhe: msgDetalhe }
     }
   } finally {
     await client.close();
@@ -157,6 +168,7 @@ module.exports = {
   MongoConecta: MongoConecta,
   InsereChat: InsereChat,
   numerosConsolidados: numerosConsolidados,
-  getAlertWords:getAlertWords,
-  insertAlertWords:insertAlertWords
+  getAlertWords: getAlertWords,
+  insertAlertWords: insertAlertWords,
+  retornaDados:retornaDados
 }

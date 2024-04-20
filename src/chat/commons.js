@@ -1,4 +1,5 @@
 const mongoDB = require("../mongo/mongoCommon")
+const chatGPT = require('../openai/commons')
 const conversorDeTimestamp = require("../utils/conversorDeTimestamp");
 
 function buscaComando(message) {
@@ -8,31 +9,34 @@ function buscaComando(message) {
   return command.substring(1);
 }
 
-// async function keywordCheck(message) {
-//   if(message == null) {
-//     return false;
-//   }
-// }
+async function keywordCheck(message) {
+  if (message == null) {
+    return false;
+  }
+  return true;
+}
 
 async function trataMensagem(msg) {
-  const comando = this.buscaComando(msg.body);
-  // const keywordAlert = await this.keywordCheck(msg.body);
-  const horario = conversorDeTimestamp.converterParaHorario(msg.timestamp);
-  const data = conversorDeTimestamp.converterParaData(msg.timestamp);
+  // const comando = this.buscaComando(msg.body);
   const device = msg._data.device;
   const notifyName = msg._data.notifyName;
 
-  console.log((`(${data} - ${horario}/${device}) - ${notifyName} / ${msg._data.type}  : ${msg.body}`));
+  console.log((`(${conversorDeTimestamp.obterDataFormatada()}/${device}) - ${notifyName} / ${msg._data.type}  : ${msg.body}`));
   mongoDB.InsereChat(msg)
-  if (msg.body.startsWith("!")) {
-    console.log(msg);
+
+  if ((msg.body.startsWith('!gpt') && msg.fromMe == false) || msg.body.startsWith('!selfgpt')) {
+    const prompt = msg.body.substring(4);
+    console.log('\n\n' + prompt);
+    const retorno = await chatGPT.chatGPTPrompt(prompt);
     msg.reply(
-      `Seu comando, enviado ${horario} / ${data}, foi *${comando}* enviado de *${notifyName}*`
-    );
+      `Mensagem do GPT Bot - ${retorno}`
+    )
   }
+
 }
 
 module.exports = {
   buscaComando: buscaComando,
-  trataMensagem: trataMensagem
+  trataMensagem: trataMensagem,
+  keywordCheck: keywordCheck
 };
