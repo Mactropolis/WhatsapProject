@@ -4,3 +4,4 @@ node_modules
 yourFolderName
 log.txt
 .env
+config.json
